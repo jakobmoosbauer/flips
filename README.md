@@ -1,6 +1,7 @@
-# Flips
+# Flip Graphs for Matrix Multiplication
 
-This repository contains the code and the data for the publication ...
+This repository contains the code and the data for the publication 
+[http://arxiv.org/abs/2212.01175](http://arxiv.org/abs/2212.01175).
 
 
 # License
