@@ -338,6 +338,10 @@ bool Scheme::reduce(){
 	}
       }
       i = range.second;
+      delete[] bpool;
+      delete[] cpool;
+      delete[] bcomb;
+      delete[] ccomb;
     }
   }
   return false;
