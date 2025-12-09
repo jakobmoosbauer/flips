@@ -168,12 +168,11 @@ string Tensor::newfilename(){
 }
 
 void writelog(string oldfilename, string newfilename, int steps, int oldrank, int rank){
-  if (true)
-    return; // mk 2024-04-07
   ofstream log;
   log.open(newfilename.substr(0,3) + ".log", ios_base::app);
   log << time(NULL) << "," << oldfilename << "," << oldrank << "," << newfilename << "," << steps << "," << rank << endl;
   log.close();
+  return;
 }
 
 bool Tensor::iscorrect(){
@@ -206,16 +205,17 @@ void Tensor::randompath(int steps, mt19937 &gen, int split_distance, bool split,
   if (split) {
     while(!randomsplit(gen, coinflip, d3, split_distance));
   }
+  int i = 0;
   do{
-    int i = 0;
+    i = 0;
     for(i = 0; i<steps; ++i) {
       int size = flips[0].size() + flips[1].size() + flips[2].size();
       if (size == 0) {
-	writetofile(i);
-	return;
+        writetofile(i);
+        return;
       }
       if (randomflip(gen, coinflip, true)) {
-	break;
+        break;
       }
     }
     if (i == steps) {
@@ -223,7 +223,7 @@ void Tensor::randompath(int steps, mt19937 &gen, int split_distance, bool split,
       return;
     }
   } while(restart);
-  writetofile(steps);
+  writetofile(i);
   return;
 }
 
